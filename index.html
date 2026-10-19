@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+
+<html lang="th">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>A Letter For You 💗</title>
+
+<style>
+
+* {
+
+  box-sizing: border-box;
+
+}
+
+body {
+
+  margin: 0;
+
+  min-height: 100vh;
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  overflow: hidden;
+
+  font-family: sans-serif;
+
+  background: linear-gradient(135deg, #ffe0ed, #fff0f5, #ffd1e3);
+
+  color: #a83d68;
+
+}
+
+.container {
+
+  text-align: center;
+
+  padding: 24px;
+
+  width: 100%;
+
+  max-width: 400px;
+
+  position: relative;
+
+  z-index: 2;
+
+}
+
+h1 {
+
+  font-size: 27px;
+
+  margin-bottom: 10px;
+
+}
+
+.subtitle {
+
+  font-size: 15px;
+
+  margin-bottom: 35px;
+
+}
+
+.envelope {
+
+  width: 230px;
+
+  height: 150px;
+
+  margin: 0 auto 30px;
+
+  position: relative;
+
+  cursor: pointer;
+
+  background: #ff9fc5;
+
+  border-radius: 8px;
+
+  box-shadow: 0 12px 30px #d979a355;
+
+  transition: transform 0.3s;
+
+}
+
+.envelope:hover {
+
+  transform: translateY(-5px);
+
+}
+
+.flap {
+
+  position: absolute;
+
+  top: 0;
+
+  left: 0;
+
+  width: 0;
+
+  height: 0;
+
+  border-left: 115px solid transparent;
+
+  border-right: 115px solid transparent;
+
+  border-top: 90px solid #ff75ab;
+
+  transform-origin: top;
+
+  transition: transform 0.6s;
+
+  z-index: 4;
+
+}
+
+.pocket {
+
+  position: absolute;
+
+  inset: 0;
+
+  background: #ffb4d0;
+
+  clip-path: polygon(0 0, 50% 60%, 100% 0, 100% 100%, 0 100%);
+
+  border-radius: 8px;
+
+  z-index: 3;
+
+}
+
+.heart {
+
+  position: absolute;
+
+  top: 55px;
+
+  left: 95px;
+
+  font-size: 40px;
+
+  z-index: 5;
+
+  transition: opacity 0.3s;
+
+}
+
+.letter {
+
+  position: absolute;
+
+  left: 15px;
+
+  bottom: 10px;
+
+  width: 200px;
+
+  height: 120px;
+
+  background: #fffafd;
+
+  border-radius: 6px;
+
+  padding: 14px 8px;
+
+  font-size: 13px;
+
+  line-height: 1.7;
+
+  opacity: 0;
+
+  transition: all 0.6s;
+
+  z-index: 2;
+
+}
+
+.envelope.open .flap {
+
+  transform: rotateX(180deg);
+
+  z-index: 1;
+
+}
+
+.envelope.open .heart {
+
+  opacity: 0;
+
+}
+
+.envelope.open .letter {
+
+  opacity: 1;
+
+  transform: translateY(-100px);
+
+  height: 175px;
+
+  z-index: 5;
+
+}
+
+button {
+
+  border: none;
+
+  border-radius: 30px;
+
+  padding: 13px 25px;
+
+  background: #ff78ac;
+
+  color: white;
+
+  font-size: 16px;
+
+  cursor: pointer;
+
+  box-shadow: 0 5px 15px #e68bb055;
+
+}
+
+button:active {
+
+  transform: scale(0.96);
+
+}
+
+.footer {
+
+  margin-top: 22px;
+
+  font-size: 12px;
+
+  color: #bd7190;
+
+}
+
+.floating-heart {
+
+  position: fixed;
+
+  bottom: -30px;
+
+  animation: floatUp linear infinite;
+
+  pointer-events: none;
+
+  z-index: 1;
+
+}
+
+@keyframes floatUp {
+
+  from {
+
+    transform: translateY(0) rotate(0);
+
+    opacity: 0;
+
+  }
+
+  15% { opacity: 0.8; }
+
+  to {
+
+    transform: translateY(-110vh) rotate(35deg);
+
+    opacity: 0;
+
+  }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+  <h1>For My baby 💗</h1>
+
+  <p class="subtitle">เค้ามีจดหมายเล็ก ๆ มาให้เธอ ♡</p>
+
+  <div class="envelope" id="envelope"
+
+       onclick="openLetter()">
+
+    <div class="flap"></div>
+
+    <div class="letter">
+
+      <strong>ถึงคนเบบี๋ของเค้า 💌</strong><br>
+
+      ขอบคุณที่เข้ามาเป็นความสุข<br>
+
+      ในทุก ๆ วันของเค้านะ<br>
+
+      ขอให้เรามีรอยยิ้มด้วยกัน<br>
+
+      ไปนาน ๆ เลยนะ รักบี๋นะ ♡
+
+    </div>
+
+    <div class="pocket"></div>
+
+    <div class="heart">💗</div>
+
+  </div>
+
+  <button onclick="openLetter()">
+
+    เปิดจดหมาย 💌
+
+  </button>
+
+  <p class="footer">made with love, just for you ♡</p>
+
+</div>
+
+<script>
+
+function openLetter() {
+
+  document.getElementById("envelope")
+
+    .classList.toggle("open");
+
+}
+
+const hearts = ["💗", "💕", "♡", "🌸", "💖"];
+
+for (let i = 0; i < 18; i++) {
+
+  const heart = document.createElement("div");
+
+  heart.className = "floating-heart";
+
+  heart.textContent =
+
+    hearts[Math.floor(Math.random() * hearts.length)];
+
+  heart.style.left = Math.random() * 100 + "vw";
+
+  heart.style.animationDuration =
+
+    (5 + Math.random() * 7) + "s";
+
+  heart.style.animationDelay =
+
+    (Math.random() * 8) + "s";
+
+  heart.style.fontSize =
+
+    (14 + Math.random() * 18) + "px";
+
+  document.body.appendChild(heart);
+
+}
+
+</script>
+
+</body>
+
+</html>
